@@ -31,7 +31,7 @@ app.use((err:any, req:Request, res:Response, next:NextFunction)=> {
     res.status(statusCode).json({
         status: "false",
         message: message,
-        error: "",
+        error: '',
         stack: config.node_env === 'development'? err.stack : null
     })
 })

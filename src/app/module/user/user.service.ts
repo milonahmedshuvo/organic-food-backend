@@ -1,6 +1,9 @@
+import config from "../../config";
 import AppError from "../../error/appError";
 import { TUser } from "./user.interface";
 import { User } from "./user.model";
+import jwt from 'jsonwebtoken'
+
 
 const registerFromDB = async (payload:TUser) => {
 
@@ -17,7 +20,21 @@ const registerFromDB = async (payload:TUser) => {
 
    const result = await User.create(payload)
    console.log('user:', result)
-   return result
+
+   const jwtPayload = {
+    id : result._id,
+    email: result.email,
+    role: result.role,
+    password: result.password
+   }
+
+   const accessToken = jwt.sign(jwtPayload, config.jwt_private_key as string, {expiresIn: '30d'})
+
+
+   return {
+    accessToken,
+    result
+   }
 }
 
 

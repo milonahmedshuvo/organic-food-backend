@@ -1,10 +1,12 @@
 import express from "express";
 import { userControllers } from "./user.controller";
+import validateRequist from "../../middlewares/validateRequist";
+import { userValidations } from "./user.validation";
 const router = express.Router();
 
 
 
-router.post("/register",userControllers.register );  
+router.post("/register",validateRequist(userValidations.createUserSchema), userControllers.register );  
 router.post("/login", );        
 
 export const userRouters = router
