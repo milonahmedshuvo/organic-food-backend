@@ -6,6 +6,5 @@ export interface TUser {
     phone: string;
     password: string;
     role: "customer" | "admin";
-    wishlist: mongoose.Types.ObjectId[];
-    createdAt: Date;
+    wishlist?: mongoose.Types.ObjectId[];
   }
