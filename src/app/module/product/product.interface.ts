@@ -1,6 +1,6 @@
 // import {  Document } from "mongoose";
 
-export interface IProduct  {
+export interface TProduct  {
   name: string;
   description: string;
   price: number;
@@ -8,5 +8,4 @@ export interface IProduct  {
   category: string;
   image: string;
   currency: "BDT" | "USD";
-  createdAt: Date;
 }

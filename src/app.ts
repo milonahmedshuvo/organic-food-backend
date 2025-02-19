@@ -7,6 +7,7 @@ import { TError } from './app/error/errorType'
 import AppError from './app/error/appError'
 import { ZodError } from 'zod'
 import handleZodError from './app/error/handleZodError'
+import { productRoute } from './app/module/product/product.routes'
 const app = express()
 
 
@@ -17,6 +18,11 @@ app.use(cors())
 
 // application routes 
 app.use('/api/v1/user', userRouters)
+// working product api 
+app.use('/api/v1/product', productRoute)
+
+
+
 
 app.get('/', (req, res) => {
   res.send('Organic food server is runing..!')

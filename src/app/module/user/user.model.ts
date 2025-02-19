@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { TUser, TUserLogin } from "./user.interface";
+import { TUser } from "./user.interface";
 
 
 const UserSchema = new Schema<TUser>(
@@ -15,11 +15,5 @@ const UserSchema = new Schema<TUser>(
   );
 
 
-  const userLoginSchema = new Schema<TUserLogin>({
-     email: { type: String, required: true },
-     password: { type:String, required: true }
-  })
-
-
-  export const UserLogin = model<TUserLogin>("UserLogin", userLoginSchema )
+  
   export const User = model<TUser>("User", UserSchema);
