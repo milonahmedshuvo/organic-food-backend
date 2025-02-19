@@ -8,3 +8,9 @@ export interface TUser {
     role: "customer" | "admin";
     wishlist?: mongoose.Types.ObjectId[];
   }
+
+
+export interface TUserLogin {
+  email: string,
+  password: string
+}  

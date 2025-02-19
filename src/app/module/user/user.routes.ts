@@ -7,6 +7,6 @@ const router = express.Router();
 
 
 router.post("/register",validateRequist(userValidations.createUserSchema), userControllers.register );  
-router.post("/login", );        
+router.post("/login", validateRequist(userValidations.loginUserSchema),  userControllers.login );        
 
 export const userRouters = router

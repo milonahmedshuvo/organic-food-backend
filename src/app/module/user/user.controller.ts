@@ -17,6 +17,25 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
   };
 
 
+  const login = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+      const user = await userServices.loginFromDB(req.body)
+      res.status(200).json({
+        status: true,
+        message: 'User login successfully',
+        data: user
+      });
+    } catch (error) {
+      next(error);
+    }
+  };  
+
+
+
+
+
 export const userControllers = {
-    register
+    register,
+    login
 }

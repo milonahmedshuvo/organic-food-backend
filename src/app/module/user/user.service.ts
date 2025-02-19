@@ -1,6 +1,6 @@
 import config from "../../config";
 import AppError from "../../error/appError";
-import { TUser } from "./user.interface";
+import { TUser, TUserLogin } from "./user.interface";
 import { User } from "./user.model";
 import jwt from 'jsonwebtoken'
 
@@ -19,7 +19,6 @@ const registerFromDB = async (payload:TUser) => {
    }
 
    const result = await User.create(payload)
-   console.log('user:', result)
 
    const jwtPayload = {
     id : result._id,
@@ -38,7 +37,30 @@ const registerFromDB = async (payload:TUser) => {
 }
 
 
+const loginFromDB = async (payload:TUserLogin) => {
+
+    const user = await User.findOne({email: payload.email})
+    if(!user){
+        throw new AppError(400, 'user credential not valid')
+    }
+
+    const jwtPayload = {
+        id: user._id,
+        email: user.email,
+        password: user.password,
+        role: user.role
+    }
+
+    const accessToken = jwt.sign(jwtPayload, config.jwt_private_key as string, {expiresIn:"30d"})
+
+    return {
+        accessToken,
+        user
+    }
+}
+
 
 export const userServices = {
-    registerFromDB
+    registerFromDB,
+    loginFromDB
 }

@@ -12,6 +12,15 @@ const createUserSchema = z.object({
 });
 
 
+
+const loginUserSchema = z.object({
+    body : z.object({
+        email : z.string().email('Email is invalid format'),
+        password: z.string().min(4, 'password must be at least 4 characters long')
+    })
+})
+
 export const userValidations = {
-    createUserSchema
+    createUserSchema,
+    loginUserSchema
 }
