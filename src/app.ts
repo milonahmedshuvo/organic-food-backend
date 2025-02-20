@@ -8,6 +8,7 @@ import AppError from './app/error/appError'
 import { ZodError } from 'zod'
 import handleZodError from './app/error/handleZodError'
 import { productRoute } from './app/module/product/product.routes'
+import { orderRoute } from './app/module/order/order.routes'
 const app = express()
 
 
@@ -17,10 +18,10 @@ app.use(express.json())
 app.use(cors())
 
 // application routes 
-app.use('/api/v1/user', userRouters)
-// working product api 
+app.use('/api/v1/user', userRouters) 
 app.use('/api/v1/product', productRoute)
-
+// working product api
+app.use('/api/v1/order',orderRoute)
 
 
 
