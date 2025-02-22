@@ -6,4 +6,7 @@ export interface TOrder extends Document {
   totalAmount: number;
   status: "Confirmed" | "Processing" | "Shipped" | "Delivered";
   paymentMethod: "Online Payment" | "Cash on Delivery";
+  phone: string,
+  city: string,
+  zipCode : string,
 }

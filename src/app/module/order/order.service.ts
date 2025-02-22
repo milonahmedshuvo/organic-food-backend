@@ -1,9 +1,15 @@
+import mongoose from "mongoose";
 import { TOrder } from "./order.interface";
 import { Order } from "./order.model";
 
 
-const createOrderFromDB = async (orderData: TOrder): Promise<TOrder> => {
-  console.log('order data', orderData)
+const createOrderFromDB = async (orderData: TOrder, id:string): Promise<TOrder> => {
+  
+
+  orderData.customer = new mongoose.Types.ObjectId(id)
+
+  // console.log('order data', orderData)
+
   const order = new Order(orderData);
   await order.save();
   return order;
@@ -11,7 +17,7 @@ const createOrderFromDB = async (orderData: TOrder): Promise<TOrder> => {
 
 const getAllOrdersFromDB = async() => {
 
-    const orders = await Order.find()
+    const orders = await Order.find().populate("customer", "name email")
     return orders
 }
 

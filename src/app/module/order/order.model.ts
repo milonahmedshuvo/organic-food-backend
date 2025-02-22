@@ -13,6 +13,9 @@ const OrderSchema = new Schema<TOrder>(
       totalAmount: { type: Number, required: true },
       status: { type: String, enum: ["Confirmed", "Processing", "Shipped", "Delivered"], default: "Confirmed" },
       paymentMethod: { type: String, enum: ["Online Payment", "Cash on Delivery"], required: true },
+      phone : {type: String, required : true},
+      city : { type : String, required: true },
+      zipCode : {type: String, required: true}
     },
     { timestamps: true }
   );

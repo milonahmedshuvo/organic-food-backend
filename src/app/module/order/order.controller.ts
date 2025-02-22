@@ -5,7 +5,8 @@ import AppError from '../../error/appError';
 
  const createOrder = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const order = await orderService.createOrderFromDB(req.body)
+
+    const order = await orderService.createOrderFromDB(req.body, req.user.id)
     res.status(201).json({ 
         status: true,
         message: 'Order created successfully',

@@ -34,10 +34,10 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
 
 
-  const allUsers = async (req: Request, res: Response, next: NextFunction) => {
+  const allCustomer = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
-      const user = await userServices.allUsersFromDB()
+      const user = await userServices.allCustomerFromDB()
       res.status(200).json({
         status: true,
         message: 'User retrieve successfully',
@@ -53,5 +53,5 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 export const userControllers = {
     register,
     login,
-    allUsers
+    allCustomer
 }
