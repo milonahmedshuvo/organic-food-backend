@@ -4,10 +4,12 @@ import { AnyZodObject } from "zod";
 const validateRequist = (zodSchema:AnyZodObject) => {
 
     return async (req:Request, res:Response, next:NextFunction) => {
-
+          
+        console.log('validate data', req.body.data)
+        
         try{
             await zodSchema.parseAsync({
-                body: req.body
+                body: req.body.data
              })
 
              next()

@@ -4,7 +4,7 @@ import AppError from "../../error/appError";
 
 const createProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const product = await productService.createProductFromDB(req.body)
+      const product = await productService.createProductFromDB(req.body.data)
       res.status(201).json({ 
         status: true,
         message: 'Product created successfully',

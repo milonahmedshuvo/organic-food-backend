@@ -5,7 +5,7 @@ import { userServices } from "./user.service";
 const register = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
-      const user = await userServices.registerFromDB(req.body)
+      const user = await userServices.registerFromDB(req.body.data)
       res.status(200).json({
         status: true,
         message: 'User registered successfully',
@@ -20,7 +20,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
   const login = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
-      const user = await userServices.loginFromDB(req.body)
+      const user = await userServices.loginFromDB(req.body.data)
       res.status(200).json({
         status: true,
         message: 'User login successfully',
