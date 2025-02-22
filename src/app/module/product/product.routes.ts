@@ -12,8 +12,8 @@ const router = express.Router()
 router.post("/create", auth(user_role.admin),  validateRequist(productValidation.createProductZodValidationSchema), productController.createProduct);     // Add Product (Admin)
 router.get("/all", productController.getAllProducts);     // Get All Products
 router.get("/:id", productController.getProductById);   // Get Single Product
-router.put("/update/:id", productController.updateProduct);      // Update Product (Admin)
-router.delete("/delete/:id", productController.deleteProduct);   // Delete Product (Admin)
+router.put("/update/:id", auth(user_role.admin), productController.updateProduct);      // Update Product (Admin)
+router.delete("/delete/:id", auth(user_role.admin), productController.deleteProduct);   // Delete Product (Admin)
 
 
 

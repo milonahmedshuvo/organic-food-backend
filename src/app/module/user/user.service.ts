@@ -60,7 +60,14 @@ const loginFromDB = async (payload:TUserLogin) => {
 }
 
 
+
+const allUsersFromDB = async () => {
+    const users = await User.find()
+    return users
+}
+
 export const userServices = {
     registerFromDB,
-    loginFromDB
+    loginFromDB,
+    allUsersFromDB
 }

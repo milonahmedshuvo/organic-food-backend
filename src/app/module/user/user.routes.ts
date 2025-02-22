@@ -8,5 +8,5 @@ const router = express.Router();
 
 router.post("/register",validateRequist(userValidations.createUserSchema), userControllers.register );  
 router.post("/login", validateRequist(userValidations.loginUserSchema),  userControllers.login );        
-
+router.get('/all-users', userControllers.allUsers )
 export const userRouters = router

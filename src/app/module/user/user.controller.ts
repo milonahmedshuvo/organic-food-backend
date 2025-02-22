@@ -34,8 +34,24 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
 
 
+  const allUsers = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+      const user = await userServices.allUsersFromDB()
+      res.status(200).json({
+        status: true,
+        message: 'User retrieve successfully',
+        data: user
+      });
+    } catch (error) {
+      next(error);
+    }
+  };  
+
+
 
 export const userControllers = {
     register,
-    login
+    login,
+    allUsers
 }
